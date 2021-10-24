@@ -1,0 +1,261 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Swagger HLF Trade Finance.",
+    "version": "1.0.0",
+    "title": "Swagger HLF Trade Finance",
+
+    "contact": {
+      "email": ""
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/emptrack",
+
+  "schemes": ["http"],
+  "paths": {
+    "/addOrganisation": {
+      "post": {
+        "summary": "Add organizations into network",
+        "description": "adding Organisation",
+        "operationId": "addOrganisation",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "organisation object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ORG"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/allOrganisation": {
+      "post": {
+        "summary": "Get All organisation",
+        "description": "Get All organisation",
+        "operationId": "allOrganisation",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "Get All organisation",
+            "content": "application/json",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/ORG"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addEmployee": {
+      "post": {
+        "summary": "Add Employee",
+        "description": "Add Employee",
+        "operationId": "addEmployee",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Employee Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EMP"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/getAllEmployees": {
+      "post": {
+        "summary": "Get All Employees",
+        "description": "Get All Employees",
+        "operationId": "getAllEmployees",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          },
+          "200": {
+            "description": "Get All employees",
+            "content": "application/json",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/EMP"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transferEmployee": {
+      "post": {
+        "summary": "Transfer Employee",
+        "description": "Transfer Employee",
+        "operationId": "transferEmployee",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Transfer Employee",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TRF_EMP"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    },
+    "/employeeHistory": {
+      "post": {
+        "summary": "Get employee History",
+        "description": "Get employee History",
+        "operationId": "employeeHistory",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "employee History Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/EMP_HIS"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid status value"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ORG": {
+      "type": "object",
+      "properties": {
+        "orgID": {
+          "type": "string",
+          "description": "Organisation ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Organisation Name"
+        },
+        "code": {
+          "type": "string",
+          "description": "Organisation Code"
+        },
+        "location": {
+          "type": "string",
+          "description": "Organisation Code"
+        }
+      }
+    },
+    "EMP": {
+      "type": "object",
+      "properties": {
+        "employeeID": {
+          "type": "string",
+          "description": "Employee ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "employee Name"
+        },
+        "email": {
+          "type": "string",
+          "description": "Employee Email"
+        },
+        "designation": {
+          "type": "string",
+          "description": "employee Designation"
+        },
+        "organisation": {
+          "type": "string",
+          "description": "Employee Organisation"
+        },
+        "experience": {
+          "type": "string",
+          "description": "Employee Experience"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Employee skills"
+        }
+      }
+    },
+    "TRF_EMP": {
+      "type": "object",
+      "properties": {
+        "empID": {
+          "type": "string",
+          "description": "Employee ID"
+        },
+        "organisation": {
+          "type": "string",
+          "description": "Organisation Name"
+        }
+      }
+    },
+    "EMP_HIS": {
+      "type": "object",
+      "properties": {
+        "empID": {
+          "type": "string",
+          "description": "Organisation ID"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

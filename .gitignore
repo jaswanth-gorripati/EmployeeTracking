@@ -1,0 +1,6 @@
+bin
+fabric-samples
+log.txt
+chaincode/vendor
+temp.txt
+api/node_modules
